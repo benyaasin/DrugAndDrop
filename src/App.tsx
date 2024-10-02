@@ -54,7 +54,7 @@ function App() {
     const newList = listItems.filter((item) => item.id !== id)
     setlistItems(newList)
   }
-  const handleEdit = ()=>{
+  const handleEdit = (id: string | number)=>{
     const selectedItem = listItems.find((item)=>item.id === selectedId)
     if(selectedItem){
       const newList = listItems.map((item)=>item.id === selectedId ? {...item, content: editInput}:item)
