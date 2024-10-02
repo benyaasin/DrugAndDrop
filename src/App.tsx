@@ -1,7 +1,5 @@
-
 import { useState } from 'react';
-
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, TextField } from '@mui/material';
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
@@ -42,6 +40,7 @@ function App() {
     }
 
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleDrag = (result: any) => {
     if (!result.destination) return;
     const items = [...listItems]
@@ -54,10 +53,10 @@ function App() {
     const newList = listItems.filter((item) => item.id !== id)
     setlistItems(newList)
   }
-  const handleEdit = (id: string | number)=>{
-    const selectedItem = listItems.find((item)=>item.id === selectedId)
-    if(selectedItem){
-      const newList = listItems.map((item)=>item.id === selectedId ? {...item, content: editInput}:item)
+  const handleEdit = (id: string) => {
+    const selectedItem = listItems.find((item) => item.id === id)
+    if (selectedItem) {
+      const newList = listItems.map((item) => item.id === id ? {...item, content: editInput} : item)
       setlistItems(newList)
       setOpen(false)
     }
